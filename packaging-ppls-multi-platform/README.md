@@ -7,8 +7,8 @@ Problem Statement:
 
 Proposed Solution:
 
-- rename each platform-specific PPL something like: `my_library.ppl.linux_32`, `my_library.ppl.win_32`, `my_library.ppl.win_64`
-- keep all of these next to the PPL for your platform. e.g. if you're working in 64-bit LabVIEW on Windows, then your active PPL named `my_library.ppl` will be identical to `my_library.ppl.win_64`
+- rename each platform-specific PPL something like: `my_library.lvlibp.linux_x86`, `my_library.lvlibp.windows_x86`, `my_library.lvlibp.windows_x64`
+- keep all of these next to the PPL for your platform. e.g. if you're working in 64-bit LabVIEW on Windows, then your active PPL named `my_library.lvlibp` will be identical to `my_library.lvlibp.windows_x64`
 - if you want, you can keep all these platform-specific PPLs in a subfolder, but they should all be installed and in a location you can easily find, post-install
-- create a post install custom action that finds PPLs in the installed files and for each PPL it finds, checks if there is a platform-specific PPL and copies it over the active PPL. e.g. if I were installing the package on linux it would delete then copy `my_library.ppl.linux_32` as `my_library.ppl` (replacing the existing  `my_library.ppl`).
-- optionally, this post-install script could delete all files matching `my_library.ppl.*` since they are no longer needed. However, they can probably just be left there since they aren't hurting anything (as they do not have valid LabVIEW file type extensions)
+- create a post install custom action that finds PPLs in the installed files and for each PPL it finds, checks if there is a platform-specific PPL and copies it over the active PPL. e.g. if I were installing the package on linux it would delete then copy `my_library.lvlibp.linux_x86` as `my_library.lvlibp` (replacing the existing `my_library.lvlibp`).
+- optionally, this post-install script could delete all files matching `my_library.lvlibp.*_*` since they are no longer needed. However, they can probably just be left there since they aren't hurting anything (as they do not have valid LabVIEW file type extensions)
